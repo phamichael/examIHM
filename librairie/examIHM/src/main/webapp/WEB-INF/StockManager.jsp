@@ -32,7 +32,7 @@
                     dataType: "json",
                     success: function(result)
                     {
-                        var formAddItem =
+                        var addItemForm =
                                 '<form id="addItem" class="addItem" name="addItem" ' +
                                 'action="/addItem.action" method="post">' +
                                     '<fieldset>' +
@@ -40,7 +40,7 @@
 
                         if(result.typeSelected == 'LIVRE')
                         {
-                            formAddItem +=
+                            addItemForm +=
                                         '<input id="editor" name="editor" placeholder="Éditeur"> </input> </br>' +
                                         '<input id="year" name="year" placeholder="Année d\'édition"> </input> /' +
                                         '<input id="month" name="month" placeholder="Mois"> </input> /' +
@@ -50,17 +50,17 @@
 
                         } else if(result.typeSelected == 'CD')
                         {
-                            formAddItem +=
+                            addItemForm +=
                                         '<input id="singer" name="singer" placeholder="Chanteur"> </input> </br>';
 
                         }
-                        formAddItem +=
+                        addItemForm +=
                                         '<input id="price" name="price" placeholder="Prix"> </input> </br></br>' +
                                         '<input type="hidden" id="typeSelected" name="typeSelected" value="' + result.typeSelected + '"> </input>' +
                                         '<input id="addItemSubmit" class="btn btn-primary center-block " value="Ajouter" type="submit"> </input>' +
                                     '</fieldset>' +
                                 '</form>';
-                        $('#formAddItem').html(formAddItem);
+                        $('#addItemForm').html(addItemForm);
                     },
                     error: function()
                     {
@@ -81,7 +81,7 @@
                     dataType: "json",
                     success: function(result)
                     {
-                        var formOrderItem =
+                        var orderItemForm =
                                 '<form id="orderItem" class="orderItem" name="orderItem" ' +
                                 'action="/orderItem.action" method="post">' +
                                     '<fieldset>' +
@@ -91,7 +91,7 @@
                                         '<input id="orderItemSubmit1" class="btn btn-primary center-block " value="Valider" type="submit"> </input>' +
                                     '</fieldset>' +
                                 '</form>';
-                        $('#formOrderItem1').html(formOrderItem);
+                        $('#orderItemForm').html(orderItemForm);
                     },
                     error: function()
                     {
@@ -112,9 +112,9 @@
                     dataType: "json",
                     success: function(result)
                     {
-                        var formOrderItem =
-                                '<form id="orderItem" class="orderItem" name="orderItem" ' +
-                                'action="/orderItem.action" method="post">' +
+                        var restockItemForm =
+                                '<form id="restockItem" class="restockItem" name="restockItem" ' +
+                                'action="/restockItem.action" method="post">' +
                                     '<fieldset>' +
                                         'Précisez la quantité souhaitée pour l\'article: <strong>' + result.item.libelle + '</strong> </br><br/>' +
                                         '<input type="hidden" id="itemSelected" name="itemSelected" value="' + result.itemSelected + '"> </input>' +
@@ -122,7 +122,7 @@
                                         '<input id="orderItemSubmit2" class="btn btn-primary center-block " value="Valider" type="submit"> </input>' +
                                     '</fieldset>' +
                                 '</form>';
-                        $('#formOrderItem2').html(formOrderItem);
+                        $('#restockItemForm').html(restockItemForm);
                     },
                     error: function()
                     {
@@ -163,7 +163,7 @@
                     <s:submit id="btn-submit" cssClass="btn btn-primary" value="Valider"/>
                 </s:form>
                 <br/>
-                <div id="formAddItem"></div>
+                <div id="addItemForm"></div>
             </div>
             <div class="col-md-offset-1 col-md-2">
                 <h3>Suppression d'une référence</h3>
@@ -196,7 +196,7 @@
                     <s:submit cssClass="btn btn-primary" value="Commander"/>
                 </s:form>
                 <br/>
-                <div id="formOrderItem1"></div>
+                <div id="orderItemForm"></div>
             </div>
             <div class="col-md-offset-1 col-md-2">
                 <h3>Produits en rupture de stock</h3>
@@ -214,7 +214,7 @@
                     <s:submit cssClass="btn btn-primary" value="Commander"/>
                 </s:form>
                 <br/>
-                <div id="formOrderItem2"></div>
+                <div id="restockItemForm"></div>
             </div>
         </div>
     </div>

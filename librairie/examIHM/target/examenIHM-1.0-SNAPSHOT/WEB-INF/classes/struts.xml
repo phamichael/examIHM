@@ -72,6 +72,10 @@
             <result>/WEB-INF/StockManager.jsp</result>
         </action>
 
+        <action name="restockItem" class="actions.StockManager" method="restockItem">
+            <result>/WEB-INF/StockManager.jsp</result>
+        </action>
+
     </package>
 
 </struts>

@@ -102,6 +102,14 @@ public class StockManager extends ActionSupport implements ApplicationAware, Ses
     public String orderItem() throws Exception
     {
         Long id = (Long) session.get("id");
+        service.retirerDuStock(id, Long.parseLong(itemSelected), Integer.parseInt(quantity));
+        session.put("itemsInStock", service.getStockNonVides(id));
+        return SUCCESS;
+    }
+
+    public String restockItem() throws Exception
+    {
+        Long id = (Long) session.get("id");
         service.reapprovisionnement(id, Long.parseLong(itemSelected), Integer.parseInt(quantity));
         session.put("emptyStocks", service.getStockVides(id));
         session.put("itemsInStock", service.getStockNonVides(id));
